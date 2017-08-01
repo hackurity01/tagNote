@@ -1,0 +1,43 @@
+<div class="add-button-wrap">
+  <button class="button" (click)="showModal()"><i class="fa fa-plus" aria-hidden="true"></i>새 메모</button>
+</div>
+<div class="note-list-wrap">
+  <div class="columns is-multiline">
+    <div class="column is-3" *ngFor="let note of notes">
+      <div class="card note" id="{{ note.id }}">
+        <header class="card-header">
+          <p class="card-header-title">
+            <span class="tag is-info" *ngFor="let key of note.keys">{{ key }} </span>
+          </p>
+          <a class="card-header-icon">
+        <span class="icon">
+          <i class="fa fa-angle-down"></i>
+        </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <textarea class="note-textarea" (focusout)="updateNote($event)" #updateContent>{{ note.content }}</textarea>
+            <!--<br>-->
+            <!--<small>11:09 PM - 1 Jan 2016</small>-->
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item" (click)="removeNote($event)">Delete</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="add-note-modal">
+  <div class="modal-background" (click)="hideModal()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <input class="input keys" type="text" placeholder="Tag" #keys>
+      <textarea class="textarea content" placeholder="Memo" #content></textarea>
+      <button (click)="addNote(keys, content)">저장</button>
+    </div>
+  </div>
+  <button class="modal-close is-large"></button>
+</div>

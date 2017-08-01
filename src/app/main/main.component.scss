@@ -1,0 +1,23 @@
+.add-button-wrap {
+  padding: 15px 15px 0 15px;
+}
+
+.note-list-wrap {
+  padding: 15px;
+
+  .card-content {
+    padding: 5px 10px;
+
+    .note-textarea {
+      border: 0;
+      width: 100%;
+      resize: none;
+      height: 100px;
+      overflow: auto;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}
